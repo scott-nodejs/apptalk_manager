@@ -69,7 +69,7 @@ class AdminUser extends React.Component {
                 {/* <Tag color="orange">超级管理员</Tag>*/}
                 {this.currentUserRole(record) ? (
                   <Tag color="orange">
-                    {this.currentUserRole(record).role_name}
+                    {this.currentUserRole(record).roleName}
                   </Tag>
                 ) : (
                   <Tag color="#666">无</Tag>
@@ -238,7 +238,7 @@ class AdminUser extends React.Component {
     let curr_info = value || current_user_info
     let curr_role = ''
     admin_role_all.map(item => {
-      if (item.role_id === curr_info.admin_role_ids) {
+      if (item.roleId === curr_info.adminRoleIds) {
         curr_role = item
       }
     })
@@ -306,8 +306,8 @@ class AdminUser extends React.Component {
         createAdminUserRole(
           {
             /*创建管理员用户角色*/
-            role_id: this.state.role_id,
-            uid: this.props.stateAdminUser.current_user_info.uid
+              roleIds: this.state.role_id,
+              uid: this.props.stateAdminUser.current_user_info.uid
           },
           () => {
             this.setState({
@@ -544,7 +544,10 @@ class AdminUser extends React.Component {
 
                 <FormItem {...formItemLayout} label="手机号码">
                   {getFieldDecorator('phone', {
-                    rules: [{ required: true, message: '请输入你的手机号码！' }]
+                    rules: [{
+                        pattern: /^1[3|4|5|7|8][0-9]\d{8}$/, message: '请输入正确的手机号'
+                        },
+                        { required: true, message: '请输入你的手机号码！' }]
                   })(
                     <Input
                       addonBefore={prefixSelector}
@@ -595,7 +598,7 @@ class AdminUser extends React.Component {
                   onChange={this.selectRole}
                 >
                   {admin_role_all.map(item => (
-                    <Option key={item.role_id}>{item.role_name}</Option>
+                    <Option key={item.roleId}>{item.roleName}</Option>
                   ))}
                 </Select>
               </FormItem>
@@ -612,7 +615,7 @@ class AdminUser extends React.Component {
 
             <Table
               columns={this.state.columns}
-              dataSource={stateAdminUser.admin_user_list}
+              dataSource={stateAdminUser.list}
               loading={loading}
               onChange={this.TablePageChange.bind(this)}
               pagination={this.state.pagination}

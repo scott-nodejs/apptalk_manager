@@ -23,7 +23,7 @@ function filterArray (result, pid) {
 
 export const getAdminAuthorityList = (data, callback) => {
   return dispatch => {
-    http.get('/admin-authority/list', data).then(res => {
+    http.get('/admin/authority/all', data).then(res => {
       if (callback) {
         callback(filterArray(res, ''))
       }

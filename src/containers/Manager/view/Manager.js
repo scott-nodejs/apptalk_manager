@@ -37,7 +37,7 @@ class Manager extends PureComponent {
       getAdminUserInfo({}, result => {
         console.log('result', result)
         if (result.website) {
-          document.title = result.website.website_name
+          document.title = result.website.websiteName
         }
       })
     )
@@ -98,9 +98,9 @@ class Manager extends PureComponent {
             {this.props.children}
             <Footer style={{ textAlign: 'center' }}>
               <a href="https://github.com/maoxiaoquan/kite" target="_blank">
-                Kite
+                APP说
               </a>
-              ©2019
+              ©2020
             </Footer>
           </Content>
         </Layout>

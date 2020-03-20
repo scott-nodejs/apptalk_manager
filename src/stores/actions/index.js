@@ -13,7 +13,7 @@ export const getAdminUserInfo = (data, callback) => {
       })
       return dispatch({
         type: 'SET_ASIDE_LIST',
-        all_authority_name_id: result.all_authority_name_id
+        all_authority_name_id: result.auths
       })
     })
   }

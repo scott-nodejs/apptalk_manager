@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const getOptionsList = (data, callback) => {
   return dispatch => {
-    http.get('/options/list', { params: { ...data } }).then(res => {
+    http.get('/admin/config/list', { params: { ...data } }).then(res => {
       if (callback) {
         callback(res)
       }

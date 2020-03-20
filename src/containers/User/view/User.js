@@ -65,18 +65,18 @@ class User extends React.Component {
             return (
               <div className="table-article-tag-view">
                 {this.state.user_role_all.map((item, key) => {
-                  let tags = record.user_role_ids
-                    ? record.user_role_ids.split(',')
+                  let tags = record.userRoleIds
+                    ? record.userRoleIds.split(',')
                     : []
                   return tags.map((child_item, child_key) => {
-                    if (item.user_role_id === child_item) {
+                    if (item.userRoleId === child_item) {
                       return (
                         <Tag
                           className="table-article-tag-list"
                           key={child_key}
                           color="purple"
                         >
-                          {item.user_role_name}
+                          {item.userRoleName}
                         </Tag>
                       )
                     }
@@ -128,13 +128,13 @@ class User extends React.Component {
           title: '贝壳余额',
           dataIndex: 'user_info',
           key: 'user_info',
-          render: (value, record) => {
-            return (
-              <div className="table-enable">
-                {record.user_info.shell_balance}
-              </div>
-            )
-          }
+          // render: (value, record) => {
+          //   return (
+          //     <div className="table-enable">
+          //       {record.user_info.shell_balance}
+          //     </div>
+          //   )
+          // }
         },
         {
           title: '操作',
@@ -279,7 +279,7 @@ class User extends React.Component {
     this.props.dispatch(
       getUserRoleAll('', res => {
         this.setState({
-          user_role_all: res.user_role_all ? res.user_role_all : []
+          user_role_all: res.list ? res.list : []
         })
       })
     )
@@ -426,8 +426,8 @@ class User extends React.Component {
                   })(
                     <Select mode="multiple" placeholder="请选择用户角色标签">
                       {this.state.user_role_all.map(item => (
-                        <Option key={item.user_role_id}>
-                          {item.user_role_name}
+                        <Option key={item.userRoleId}>
+                          {item.userRoleName}
                         </Option>
                       ))}
                     </Select>
@@ -479,7 +479,7 @@ class User extends React.Component {
 
             <Table
               columns={this.state.columns}
-              dataSource={stateUser.user_list}
+              dataSource={stateUser.list}
               loading={loading}
               onChange={this.TablePageChange.bind(this)}
               pagination={this.state.pagination}

@@ -1,6 +1,6 @@
 const initState = {
   admin_user_list: [],
-  count: '',
+  total: '',
   current_user_info: {},
   admin_role_all: []
 }

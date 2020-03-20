@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const getUserRoleList = (data, callback) => {
   return (dispatch) => {
-    http.get('/user-role/list', data)
+    http.get('/user/role/all', data)
       .then((res) => {
         if (callback) {
           callback(res)
@@ -17,7 +17,7 @@ export const getUserRoleList = (data, callback) => {
 
 export const getUserRoleAll = (data, callback) => {
   return (dispatch) => {
-    http.get('/user-role/all', data)
+    http.get('/user/role/all', data)
       .then((res) => {
         if (callback) {
           callback(res)

@@ -8,8 +8,8 @@ const initState = {
 function filterArray (result, pid) {
   let _array = []
   for (let i in result) {
-    if (result[i].authority_parent_id === pid) {
-      result[i].children = filterArray(result, result[i].authority_id)
+    if (result[i].authorityParentId === pid) {
+      result[i].children = filterArray(result, result[i].authorityId)
       _array.push(result[i])
     }
   }

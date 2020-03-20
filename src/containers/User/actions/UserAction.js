@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const getUserList = (data, callback) => {
   return dispatch => {
-    http.get('/user/list', data).then(res => {
+    http.get('/admin/user/all', data).then(res => {
       if (callback) {
         callback(res)
       }

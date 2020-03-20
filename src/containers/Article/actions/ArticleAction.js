@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const getArticleList = (data, callback) => {
   return dispatch => {
-    http.post('/article/list', data).then(res => {
+    http.post('/admin/article/list', data).then(res => {
       if (callback) {
         callback(res)
       }
@@ -36,7 +36,7 @@ export const deleteArticle = (data, callback) => {
 
 export const getArticleTagAll = (data, callback) => {
   return () => {
-    http.get('/article-tag/all', data).then(res => {
+    http.get('/admin/allTags', data).then(res => {
       if (callback) {
         callback(res)
       }

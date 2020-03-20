@@ -222,7 +222,7 @@ class AdminAuthority extends React.Component {
       return (
         <div className="box-tree-title clearfix">
           <div className="pull-left">
-            <span className="title">{data.authority_name} </span>
+            <span className="title">{data.authorityName} </span>
           </div>
           <div className="pull-right">
             <Icon

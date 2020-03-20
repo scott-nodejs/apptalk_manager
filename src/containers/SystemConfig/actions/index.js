@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const getSystemConfigInfo = (data, callback) => {
   return (dispatch) => {
-    http.get('/system-config/info', data)
+    http.get('/admin/config/list', data)
       .then(result => {
         if (callback) {
           callback(result)

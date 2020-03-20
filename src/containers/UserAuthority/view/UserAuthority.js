@@ -221,7 +221,7 @@ class UserAuthority extends React.Component {
       return (
         <div className="box-tree-title clearfix">
           <div className="pull-left">
-            <span className="title">{data.authority_name} </span>
+            <span className="title">{data.authorityName} </span>
           </div>
           <div className="pull-right">
             <Icon
@@ -259,7 +259,7 @@ class UserAuthority extends React.Component {
       return data.length > 0
         ? data.map(item => {
             return (
-              <TreeNode key={item.authority_id} title={customLabel(item)}>
+              <TreeNode key={item.authorityId} title={customLabel(item)}>
                 {TreeNodeTree(item.children)}
               </TreeNode>
             )
@@ -440,7 +440,7 @@ class UserAuthority extends React.Component {
             <Tree defaultExpandAll={true} showLine ref="tree">
               {stateUserAuthority.user_authority_list.map(item => {
                 return (
-                  <TreeNode key={item.authority_id} title={customLabel(item)}>
+                  <TreeNode key={item.authorityId} title={customLabel(item)}>
                     {TreeNodeTree(item.children)}
                   </TreeNode>
                 )

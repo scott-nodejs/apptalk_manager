@@ -54,7 +54,7 @@ class _Notice extends React.Component {
         render: (value, record) => {
           return (
             <div className="table-enable">
-              {JSON.parse(record.option_value).title}
+              {JSON.parse(record.optionValue).title}
             </div>
           )
         }
@@ -66,7 +66,7 @@ class _Notice extends React.Component {
         render: (value, record) => {
           return (
             <div className="table-enable">
-              {JSON.parse(record.option_value).link}
+              {JSON.parse(record.optionValue).link}
             </div>
           )
         }
@@ -78,7 +78,7 @@ class _Notice extends React.Component {
         render: (value, record) => {
           return (
             <div className="table-enable">
-              {JSON.parse(record.option_value).img_url}
+              {JSON.parse(record.optionValue).img_url}
             </div>
           )
         }
@@ -90,7 +90,7 @@ class _Notice extends React.Component {
         render: (value, record) => {
           return (
             <div className="table-enable">
-              {JSON.parse(record.option_value).enable ? (
+              {JSON.parse(record.optionValue).enable ? (
                 <Icon type="check-circle" />
               ) : (
                 <Icon type="close-circle" />

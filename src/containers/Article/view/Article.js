@@ -65,7 +65,7 @@ class Article extends React.Component {
           <a
             className="article-title"
             target="_blank"
-            href={`/p/${record.aid}`}
+            href={`/p/${record.id}`}
           >
             {record.title}
           </a>
@@ -73,27 +73,27 @@ class Article extends React.Component {
       },
       {
         title: '概要',
-        dataIndex: 'excerpt',
-        key: 'excerpt'
+        dataIndex: '',
+        key: ''
       },
       {
         title: '所属标签',
-        dataIndex: 'tag_ids',
-        key: 'tag_ids',
+        dataIndex: 'tagIds',
+        key: 'tagIds',
         render: (value, record) => {
           return (
             <div className="table-article-tag-view">
               {this.state.article_tag_all.map((item, key) => {
-                let tags = record.tag_ids.split(',')
+                let tags = record.tagIds.split(',')
                 return tags.map((child_item, child_key) => {
-                  if (item.tag_id === child_item) {
+                  if (item.enName === child_item) {
                     return (
                       <Tag
                         className="table-article-tag-list"
-                        key={child_key}
+                        key={child_item}
                         color="orange"
                       >
-                        {item.name}
+                        {item.tagName}
                       </Tag>
                     )
                   }
@@ -105,8 +105,8 @@ class Article extends React.Component {
       },
       {
         title: '创建时间',
-        dataIndex: 'create_dt',
-        key: 'create_dt'
+        dataIndex: 'createDate',
+        key: 'createDate'
       },
       {
         title: '状态',
@@ -146,7 +146,7 @@ class Article extends React.Component {
         key: 'read_count',
         render: (text, record) => (
           <Tag className="table-article-tag-list" color="green">
-            {record.read_count}
+            {record.readCount}
           </Tag>
         )
       },
@@ -156,7 +156,7 @@ class Article extends React.Component {
         key: 'comment_count',
         render: (text, record) => (
           <Tag className="table-article-tag-list" color="green">
-            {record.comment_count}
+            {record.commentCount}
           </Tag>
         )
       },
@@ -226,7 +226,7 @@ class Article extends React.Component {
       getArticleTagAll('', res => {
         console.log('res', res)
         this.setState({
-          article_tag_all: res.article_tag_all
+          article_tag_all: res
         })
       })
     )
@@ -320,7 +320,7 @@ class Article extends React.Component {
     this.props.dispatch(
       getArticleList({ page: current, ...params }, res => {
         let pagination = { ...that.state.pagination }
-        pagination.total = res.count
+        pagination.total = res.total
         pagination.current = current
         that.setState({
           loading: false,
@@ -565,7 +565,7 @@ class Article extends React.Component {
                 </FormItem>
 
                 <FormItem {...formItemLayout} label="所属标签">
-                  {getFieldDecorator('tag_ids', {
+                  {getFieldDecorator('tagIds', {
                     rules: [
                       {
                         required: true,
@@ -576,7 +576,7 @@ class Article extends React.Component {
                   })(
                     <Select mode="multiple" placeholder="请选择所属标签">
                       {this.state.article_tag_all.map(item => (
-                        <Option key={item.tag_id}>{item.name}</Option>
+                        <Option key={item.enName}>{item.name}</Option>
                       ))}
                     </Select>
                   )}

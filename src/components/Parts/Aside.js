@@ -243,7 +243,7 @@ class Aside extends Component {
             <Link className="admin-logo-view" to="/manager/index">
               <Icon type="heat-map" className="login-icon" />
               <span className="logo-text">
-                {stateMange.website && stateMange.website.website_name}
+                {stateMange.website && stateMange.website.websiteName}
               </span>
             </Link>
           </div>

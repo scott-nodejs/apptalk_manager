@@ -7,10 +7,10 @@ const initState = {
 
 function reducer (state = initState, action) {
   switch (action.type) {
-    case 'GET_ADMIN_ROLE_LIST':
+      case 'GET_ADMIN_ROLE_LIST':
       return {
-        ...state,
-        ...action.data
+          ...state,
+          ...action.data
       }
     case 'SET_CURRENT_ADMIN_ROLE_INFO':
       return {

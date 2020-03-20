@@ -24,7 +24,7 @@ function filterArray (result, pid) {
 
 export const getUserAuthorityList = (data, callback) => {
   return (dispatch) => {
-    http.get('/user-authority/list', data)
+    http.get('/admin/userauth/all', data)
       .then((res) => {
         if (callback) {
           callback(filterArray(res, ''))

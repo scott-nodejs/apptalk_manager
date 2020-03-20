@@ -54,18 +54,18 @@ class UserRole extends React.Component {
         },
         {
           title: '角色名',
-          dataIndex: 'user_role_name',
-          key: 'user_role_name',
+          dataIndex: 'userRoleName',
+          key: 'userRoleName',
           render: (text, record) => (
             <Tag className="table-article-tag-list" color="orange">
-              {record.user_role_name}
+              {record.userRoleName}
             </Tag>
           )
         },
         {
           title: '角色图标',
-          dataIndex: 'user_role_icon',
-          key: 'user_role_icon'
+          dataIndex: 'userRoleIcon',
+          key: 'userRoleIcon'
         },
         {
           title: '角色类型',
@@ -79,19 +79,19 @@ class UserRole extends React.Component {
         },
         {
           title: '角色介绍',
-          dataIndex: 'user_role_description',
-          key: 'user_role_description'
+          dataIndex: 'userRoleDescription',
+          key: 'userRoleDescription'
         },
         {
           title: '角色图标演示',
-          dataIndex: 'user_role_icon',
+          dataIndex: 'userRoleIcon',
           key: 'user_role_icon_demo',
           render: (value, record) => {
             return (
               <div className="type">
                 <img
                   className="tag-img-icon"
-                  src={record.user_role_icon}
+                  src={record.userRoleIcon}
                   alt=""
                 />
               </div>
@@ -100,8 +100,8 @@ class UserRole extends React.Component {
         },
         {
           title: '是否在个人中心显示',
-          dataIndex: 'is_show',
-          key: 'is_show',
+          dataIndex: 'isShow',
+          key: 'isShow',
           render: (value, record) => {
             return (
               <div className="table-enable">
@@ -164,8 +164,8 @@ class UserRole extends React.Component {
                       this.setState({
                         visible_set_authority_modal: true,
                         role_authority_list: this.init_tree_data(
-                          record.user_authority_ids
-                            ? record.user_authority_ids.split(',')
+                          record.userAuthorityIds
+                            ? record.userAuthorityIds.split(',')
                             : ''
                         )
                       })
@@ -229,10 +229,10 @@ class UserRole extends React.Component {
     const { user_authority_source_list } = this.props.stateUserAuthority
     user_authority_source_list.map(item => {
       if (
-        Number(item.authority_type) === 2 &&
-        val.indexOf(item.authority_id) !== -1
+        Number(item.authorityType) === 2 &&
+        val.indexOf(item.authorityId) !== -1
       ) {
-        tree_arr.push(item.authority_id)
+        tree_arr.push(item.authorityId)
       }
     })
     return tree_arr
@@ -416,15 +416,15 @@ class UserRole extends React.Component {
         return (
           <TreeNode
             dataRef={item}
-            key={item.authority_id}
-            title={item.authority_name}
+            key={item.authorityId}
+            title={item.authorityName}
             type={item.type}
           >
             {this.renderTreeNodes(item.children)}
           </TreeNode>
         )
       }
-      return <TreeNode key={item.authority_id} title={item.authority_name} />
+      return <TreeNode key={item.authorityId} title={item.authorityName} />
     })
   }
 
