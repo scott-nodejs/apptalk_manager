@@ -49,13 +49,13 @@ class ArticleTag extends React.Component {
         },
         {
           title: '标签名',
-          dataIndex: 'name',
-          key: 'name'
+          dataIndex: 'tagName',
+          key: 'tagName'
         },
         {
           title: '标签单词',
-          dataIndex: 'en_name',
-          key: 'en_name'
+          dataIndex: 'enName',
+          key: 'enName'
         },
         {
           title: '标签图标地址',
@@ -97,8 +97,8 @@ class ArticleTag extends React.Component {
         },
         {
           title: '是否加入首页或者推荐',
-          dataIndex: 'is_push',
-          key: 'is_push',
+          dataIndex: 'isPush',
+          key: 'isPush',
           render: (value, record) => {
             return (
               <div className="table-is-login">

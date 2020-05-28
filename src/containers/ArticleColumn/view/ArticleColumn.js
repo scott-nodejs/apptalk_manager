@@ -58,8 +58,8 @@ class ArticleColumn extends React.Component {
         },
         {
           title: '专栏单词',
-          dataIndex: 'en_name',
-          key: 'en_name'
+          dataIndex: 'enName',
+          key: 'enName'
         },
         {
           title: '专栏图标',
@@ -91,16 +91,16 @@ class ArticleColumn extends React.Component {
             return (
               <div className="table-article-tag-view">
                 {this.state.article_tag_all.map((item, key) => {
-                  let tags = record.tag_ids.split(',')
+                  let tags = record.tagIds ? record.tagIds.split(',') : []
                   return tags.map((child_item, child_key) => {
-                    if (item.tag_id === child_item) {
+                    if (item.id === child_item) {
                       return (
                         <Tag
                           className="table-article-tag-list"
                           key={child_key}
                           color="orange"
                         >
-                          {item.name}
+                          {item.tagName}
                         </Tag>
                       )
                     }
@@ -117,8 +117,8 @@ class ArticleColumn extends React.Component {
         },
         {
           title: '是否首页显示',
-          dataIndex: 'is_home',
-          key: 'is_home',
+          dataIndex: 'isHome',
+          key: 'isHome',
           render: (value, record) => {
             return (
               <div className="table-is-login">
@@ -197,7 +197,7 @@ class ArticleColumn extends React.Component {
       getArticleTagAll('', res => {
         console.log('res', res)
         this.setState({
-          article_tag_all: res.article_tag_all
+          article_tag_all: res
         })
       })
     )
@@ -226,7 +226,7 @@ class ArticleColumn extends React.Component {
       cancelText: 'No',
       onOk: () => {
         this.fetchDeleteArticleColumn({
-          column_id: this.props.stateArticleColumn.current_info.column_id
+          column_id: this.props.stateArticleColumn.current_info.id
         })
         /*删除专栏*/
       },
@@ -312,7 +312,7 @@ class ArticleColumn extends React.Component {
     this.props.dispatch(
       updateArticleColumn(
         {
-          column_id: this.props.stateArticleColumn.current_info.column_id,
+          id: this.props.stateArticleColumn.current_info.id,
           ...values
         },
         res => {
@@ -438,7 +438,7 @@ class ArticleColumn extends React.Component {
                 </FormItem>
 
                 <FormItem {...formItemLayout} label="专栏名单词">
-                  {getFieldDecorator('en_name', {
+                  {getFieldDecorator('enName', {
                     rules: [
                       {
                         required: true,
@@ -476,7 +476,7 @@ class ArticleColumn extends React.Component {
                       placeholder="请选择文章专栏下属专题"
                     >
                       {this.state.article_tag_all.map(item => (
-                        <Option key={item.tag_id}>{item.name}</Option>
+                        <Option key={item.id}>{item.name}</Option>
                       ))}
                     </Select>
                   )}
@@ -493,7 +493,7 @@ class ArticleColumn extends React.Component {
                 </FormItem>
 
                 <FormItem {...formItemLayout} label="是否首页显示">
-                  {getFieldDecorator('is_home', { valuePropName: 'checked' })(
+                  {getFieldDecorator('isHome', { valuePropName: 'checked' })(
                     <Switch />
                   )}
                 </FormItem>

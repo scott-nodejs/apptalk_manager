@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const createAdminAuthority = (data, callback) => {
   return dispatch => {
-    http.post('/admin-authority/create', data).then(res => {
+    http.post('/admin/authority/add', data).then(res => {
       if (callback) {
         callback(res)
       }
@@ -37,7 +37,7 @@ export const getAdminAuthorityList = (data, callback) => {
 
 export const deleteAdminAuthority = (data, callback) => {
   return dispatch => {
-    http.post('/admin-authority/delete', data).then(res => {
+    http.post('/admin/authority/delete', data.ids).then(res => {
       if (callback) {
         callback(res)
       }

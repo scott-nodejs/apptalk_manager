@@ -1,4 +1,5 @@
 import React from 'react'
+import shortid from 'shortid'
 import { connect } from 'react-redux'
 import {
   Form,
@@ -49,8 +50,8 @@ class AdminAuthority extends React.Component {
     this.props.form.resetFields()
     this.setState({
       visible: true,
-      authority_parent_id: value ? value.authority_id : '',
-      authority_parent_name: value ? value.authority_name : ''
+      authority_parent_id: value ? value.authorityId : '',
+      authority_parent_name: value ? value.authorityName : ''
     })
     if (!value) {
       this.props.form.setFields({
@@ -118,7 +119,7 @@ class AdminAuthority extends React.Component {
     const that = this
     confirm({
       title: '你确认要删除当前权限吗',
-      content: `${data.authority_name}，删除权限后，所有与之关联的角色将失去此权限！`,
+      content: `${data.authorityName}，删除权限后，所有与之关联的角色将失去此权限！`,
       okText: 'YES',
       okType: 'danger',
       cancelText: 'No',
@@ -138,14 +139,15 @@ class AdminAuthority extends React.Component {
     await this.props.dispatch(
       createAdminAuthority(
         {
-          authority_name: values.authority_name,
-          authority_type: values.authority_type,
-          authority_parent_id: this.state.authority_parent_id,
-          authority_parent_name: this.state.authority_parent_name,
-          authority_url: values.authority_url,
-          authority_sort: values.authority_sort,
-          authority_description: values.authority_description,
-          enable: values.enable || 0
+            authorityId: shortid.generate(),
+            authorityName: values.authority_name,
+            authorityType: values.authority_type,
+            authorityParentId  : this.state.authority_parent_id,
+            authorityParentName: this.state.authority_parent_name,
+            authorityUrl: values.authority_url,
+            authoritySort: values.authority_sort,
+            authorityDescription: values.authority_description,
+            enable: values.enable || 0
         },
         () => {
           this.setState({
@@ -187,7 +189,7 @@ class AdminAuthority extends React.Component {
     /* 删除权限 */
     let id_arr = await this.traversalDelete(data)
     this.props.dispatch(
-      deleteAdminAuthority({ authority_id_arr: id_arr }, () => {
+      deleteAdminAuthority({ ids: id_arr }, () => {
         this.fetchAdminAuthorityList()
         alert.message_success('删除成功')
       })
@@ -196,17 +198,16 @@ class AdminAuthority extends React.Component {
 
   traversalDelete = val => {
     let _arr = []
-
     function id_arr(data) {
       for (let i in data) {
-        _arr.push(data[i].authority_id)
+        _arr.push(data[i].authorityId)
         if (!isEmpty(data[i].children)) {
           id_arr(data[i].children)
         }
       }
     }
 
-    _arr.push(val.authority_id)
+    _arr.push(val.authorityId)
     if (!isEmpty(val.children)) {
       id_arr(val.children)
     }

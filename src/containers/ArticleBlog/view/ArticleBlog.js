@@ -214,7 +214,7 @@ class ArticleBlog extends React.Component {
     this.props.dispatch(
       getArticleBlogList({ params: { page: current, ...params } }, res => {
         let pagination = { ...that.state.pagination }
-        pagination.total = res.count
+        pagination.total = res.total
         pagination.current = current
         that.setState({
           loading: false,

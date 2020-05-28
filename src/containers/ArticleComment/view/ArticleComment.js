@@ -67,7 +67,7 @@ class ArticleComment extends React.Component {
           key: 'article',
           render: (text, record) => (
             <div>
-              <a href={`/p/${record.article.aid}`} target="_block">
+              <a href={`/p/${record.article.id}`} target="_block">
                 {record.article.title}
               </a>
             </div>
@@ -85,8 +85,8 @@ class ArticleComment extends React.Component {
         },
         {
           title: '评论时间',
-          dataIndex: 'create_dt',
-          key: 'create_dt'
+          dataIndex: 'createDate',
+          key: 'createDate'
         },
         {
           title: '操作',
@@ -257,7 +257,7 @@ class ArticleComment extends React.Component {
     this.props.dispatch(
       getCommentList({ page: current, ...params }, res => {
         let pagination = { ...that.state.pagination }
-        pagination.total = res.count
+        pagination.total = res.total
         pagination.current = current
         that.setState({
           loading: false,
