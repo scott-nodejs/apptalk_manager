@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const getArticleColumnList = (data, callback) => {
   return (dispatch) => {
-    http.get('/article-column/list', data)
+    http.post('/admin/column/list', data)
       .then((res) => {
         if (callback) {
           callback(res)
@@ -17,7 +17,7 @@ export const getArticleColumnList = (data, callback) => {
 
 export const createArticleColumn = (data, callback) => {
   return (dispatch) => {
-    http.post('/article-column/create', data)
+    http.post('/admin/column/add', data)
       .then((res) => {
         if (callback) {
           callback(res)
@@ -28,7 +28,7 @@ export const createArticleColumn = (data, callback) => {
 
 export const updateArticleColumn = (data, callback) => {
   return () => {
-    http.post('/article-column/update', data)
+    http.post('/admin/column/update', data)
       .then((res) => {
         if (callback) {
           callback(res)
@@ -39,7 +39,7 @@ export const updateArticleColumn = (data, callback) => {
 
 export const deleteArticleColumn = (data, callback) => {
   return () => {
-    http.post('/article-column/delete', data)
+    http.post('/admin/column/delete/'+data.column_id)
       .then((res) => {
         if (callback) {
           callback(res)
@@ -50,7 +50,7 @@ export const deleteArticleColumn = (data, callback) => {
 
 export const getArticleTagAll = (data, callback) => {
   return () => {
-    http.get('/article-tag/all', data)
+    http.get('/allTags')
       .then((res) => {
         if (callback) {
           callback(res)

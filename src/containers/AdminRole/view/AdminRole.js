@@ -156,7 +156,7 @@ class AdminRole extends React.Component {
         Number(item.authorityType) === 2 &&
         val.indexOf(item.authorityId) !== -1
       ) {
-        tree_arr.push(item.authorityId)
+          tree_arr.push(item.authorityId)
       }
     })
     return tree_arr

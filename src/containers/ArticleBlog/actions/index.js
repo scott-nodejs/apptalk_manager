@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const getArticleBlogList = (data, callback) => {
   return dispatch => {
-    http.get('/article-blog/list', data).then(res => {
+    http.get('/admin/blog/list', data).then(res => {
       if (callback) {
         callback(res)
       }

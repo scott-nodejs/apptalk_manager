@@ -1,8 +1,9 @@
 import http from '../../../utils/http'
+import qs from 'qs'
 
 export const getCommentList = (data, callback) => {
   return dispatch => {
-    http.post('/article-comment/list', data).then(res => {
+    http.post('/admin/comment/list', qs.stringify(data)).then(res => {
       if (callback) {
         callback(res)
       }
@@ -16,7 +17,7 @@ export const getCommentList = (data, callback) => {
 
 export const updateComment = (data, callback) => {
   return () => {
-    http.post('/article-comment/update', data).then(res => {
+    http.post('/admin/comment/update/'+data.id, qs.stringify(data)).then(res => {
       if (callback) {
         callback(res)
       }
@@ -26,7 +27,7 @@ export const updateComment = (data, callback) => {
 
 export const deleteComment = (data, callback) => {
   return () => {
-    http.post('/article-comment/delete', data).then(res => {
+    http.delete('/admin/comment/delete/'+data.id).then(res => {
       if (callback) {
         callback(res)
       }

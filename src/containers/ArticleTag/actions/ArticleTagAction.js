@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const getArticleTagList = (data, callback) => {
   return (dispatch) => {
-    http.get('/article-tag/list', data)
+    http.post('/admin/tag/list', data)
       .then((res) => {
         if (callback) {
           callback(res)

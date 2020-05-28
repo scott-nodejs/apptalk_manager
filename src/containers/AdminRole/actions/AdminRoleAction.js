@@ -1,4 +1,5 @@
 import http from '../../../utils/http'
+import qs from 'qs'
 
 export const createAdminRole = (data, func) => {
   return dispatch => {
@@ -36,7 +37,7 @@ export const editAdminRole = (data, func) => {
 
 export const setAdminRoleAuthority = (data, func) => {
   return dispatch => {
-    http.post('/admin-role-authority/set', data).then(res => {
+    http.post('/admin/role/role-authority/set/'+data.roleId, data.role_authority_list_all).then(res => {
       if (func) {
         func(res)
       }
@@ -47,7 +48,7 @@ export const setAdminRoleAuthority = (data, func) => {
 /* 删除角色 */
 export const deleteAdminRole = (data, func) => {
   return dispatch => {
-    http.post('/admin/role/delete/'+data.roleId).then(res => {
+    http.delete('/admin/role/delete/'+data.roleId).then(res => {
       if (func) {
         func(res)
       }
