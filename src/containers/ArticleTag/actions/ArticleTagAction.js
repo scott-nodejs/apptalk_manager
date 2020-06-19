@@ -28,7 +28,7 @@ export const createArticleTag = (data, callback) => {
 
 export const updateArticleTag = (data, callback) => {
   return () => {
-    http.post('/article-tag/update', data)
+    http.post('/admin/tag/update', data)
       .then((res) => {
         if (callback) {
           callback(res)
@@ -39,7 +39,7 @@ export const updateArticleTag = (data, callback) => {
 
 export const deleteArticleTag = (data, callback) => {
   return () => {
-    http.post('/article-tag/delete', data)
+    http.post('/admin/tag/delete', data)
       .then((res) => {
         if (callback) {
           callback(res)

@@ -97,8 +97,8 @@ class ArticleTag extends React.Component {
         },
         {
           title: '是否加入首页或者推荐',
-          dataIndex: 'isPush',
-          key: 'isPush',
+          dataIndex: 'push',
+          key: 'push',
           render: (value, record) => {
             return (
               <div className="table-is-login">
@@ -180,7 +180,7 @@ class ArticleTag extends React.Component {
       cancelText: 'No',
       onOk: () => {
         this.fetchDeleteArticleTag({
-          tag_id: this.props.stateArticleTag.current_info.tag_id
+          id: this.props.stateArticleTag.current_info.id
         })
         /*删除标签*/
       },
@@ -264,7 +264,7 @@ class ArticleTag extends React.Component {
     this.props.dispatch(
       updateArticleTag(
         {
-          tag_id: this.props.stateArticleTag.current_info.tag_id,
+          id: this.props.stateArticleTag.current_info.id,
           ...values
         },
         res => {
@@ -378,7 +378,7 @@ class ArticleTag extends React.Component {
             >
               <Form className="from-view" onSubmit={this.handleSubmit}>
                 <FormItem {...formItemLayout} label="标签名">
-                  {getFieldDecorator('name', {
+                  {getFieldDecorator('tagName', {
                     rules: [
                       {
                         required: true,
@@ -390,7 +390,7 @@ class ArticleTag extends React.Component {
                 </FormItem>
 
                 <FormItem {...formItemLayout} label="标签名单词">
-                  {getFieldDecorator('en_name', {
+                  {getFieldDecorator('enName', {
                     rules: [
                       {
                         required: true,
@@ -426,7 +426,7 @@ class ArticleTag extends React.Component {
                 </FormItem>
 
                 <FormItem {...formItemLayout} label="是否加入首页或者推荐">
-                  {getFieldDecorator('is_push', { valuePropName: 'checked' })(
+                  {getFieldDecorator('push', { valuePropName: 'checked' })(
                     <Switch />
                   )}
                 </FormItem>
@@ -449,7 +449,7 @@ class ArticleTag extends React.Component {
               loading={loading}
               onChange={this.TablePageChange.bind(this)}
               pagination={this.state.pagination}
-              rowKey="tag_id"
+              rowKey="id"
             />
           </div>
         </div>

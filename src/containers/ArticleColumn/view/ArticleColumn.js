@@ -85,15 +85,15 @@ class ArticleColumn extends React.Component {
         },
         {
           title: '下属专题',
-          dataIndex: 'tag_ids',
-          key: 'tag_ids',
+          dataIndex: 'tagIds',
+          key: 'tagIds',
           render: (value, record) => {
             return (
               <div className="table-article-tag-view">
                 {this.state.article_tag_all.map((item, key) => {
                   let tags = record.tagIds ? record.tagIds.split(',') : []
                   return tags.map((child_item, child_key) => {
-                    if (item.id === child_item) {
+                    if (item.id === parseInt(child_item)) {
                       return (
                         <Tag
                           className="table-article-tag-list"
@@ -105,6 +105,7 @@ class ArticleColumn extends React.Component {
                       )
                     }
                   })
+
                 })}
               </div>
             )
@@ -212,7 +213,7 @@ class ArticleColumn extends React.Component {
     this.props.dispatch({ type: 'SET_ARTICLE_COLUMN_INFO', data: data })
     this.props.form.setFieldsValue({
       ...data,
-      tag_ids: data.tag_ids ? data.tag_ids.split(',') : []
+      tagIds: data.tagIds ? data.tagIds.split(',') : []
     })
   }
 
@@ -462,7 +463,7 @@ class ArticleColumn extends React.Component {
                 </FormItem>
 
                 <FormItem {...formItemLayout} label="专栏下属专题">
-                  {getFieldDecorator('tag_ids', {
+                  {getFieldDecorator('tagIds', {
                     rules: [
                       {
                         required: true,
@@ -476,7 +477,7 @@ class ArticleColumn extends React.Component {
                       placeholder="请选择文章专栏下属专题"
                     >
                       {this.state.article_tag_all.map(item => (
-                        <Option key={item.id}>{item.name}</Option>
+                        <Option key={item.id}>{item.tagName}</Option>
                       ))}
                     </Select>
                   )}
