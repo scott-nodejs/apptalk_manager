@@ -16,7 +16,7 @@ export const getArticleList = (data, callback) => {
 
 export const editArticle = (data, callback) => {
   return () => {
-    http.post('/article/edit', data).then(res => {
+    http.post('/admin/article/edit', data).then(res => {
       if (callback) {
         callback(res)
       }
@@ -26,7 +26,7 @@ export const editArticle = (data, callback) => {
 
 export const deleteArticle = (data, callback) => {
   return () => {
-    http.post('/article/delete', data).then(res => {
+    http.post('/admin/article/delete', data).then(res => {
       if (callback) {
         callback(res)
       }

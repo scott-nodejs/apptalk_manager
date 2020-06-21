@@ -258,7 +258,7 @@ class Article extends React.Component {
       cancelText: 'No',
       onOk: () => {
         this.fetchArticleDelete({
-          aid: this.props.stateArticle.current_info.aid
+          aid: this.props.stateArticle.current_info.id
         })
         /*删除文章*/
       },
@@ -334,7 +334,7 @@ class Article extends React.Component {
     /*修改文章*/
     this.props.dispatch(
       editArticle(
-        { aid: this.props.stateArticle.current_info.aid, ...values },
+        { aid: this.props.stateArticle.current_info.id, ...values },
         res => {
           alert.message_success('修改文章成功')
           this.fetchArticleList()
@@ -576,7 +576,7 @@ class Article extends React.Component {
                   })(
                     <Select mode="multiple" placeholder="请选择所属标签">
                       {this.state.article_tag_all.map(item => (
-                        <Option key={item.enName}>{item.name}</Option>
+                        <Option key={item.enName}>{item.tagName}</Option>
                       ))}
                     </Select>
                   )}
