@@ -50,8 +50,8 @@ class Picture extends React.Component {
         },
         {
           title: '图片标题',
-          dataIndex: 'picture_title',
-          key: 'picture_title'
+          dataIndex: 'title',
+          key: 'title'
         },
         {
           title: '图片说明',
@@ -60,17 +60,17 @@ class Picture extends React.Component {
         },
         {
           title: '图片地址',
-          dataIndex: 'picture_url',
-          key: 'picture_url'
+          dataIndex: 'url',
+          key: 'url'
         },
         {
           title: '图片演示',
-          dataIndex: 'picture_url',
-          key: 'picture_show',
+          dataIndex: 'url',
+          key: 'show',
           render: (value, record) => {
             return (
               <div className="admin-table-img-show">
-                <img src={record.picture_url} alt="" />
+                <img src={record.url} alt="" />
               </div>
             )
           }
@@ -132,7 +132,7 @@ class Picture extends React.Component {
       menu_text: ['', '首页轮播图', '首页广告'],
       upload_prop: {
         name: 'file',
-        action: '/api-admin/v1/upload/picture',
+        action: '/api-admin/v1/admin/image/upload',
         headers: {
           'x-access-token': localStorage.box_tokens
         },
@@ -155,9 +155,9 @@ class Picture extends React.Component {
     })
     this.props.dispatch({ type: 'SET_PICTURE_INFO', data: data })
     this.props.form.setFieldsValue({
-      picture_title: data.picture_title,
+      title: data.title,
       description: data.description,
-      picture_url: data.picture_url,
+      url: data.url,
       enable: data.enable
     })
     let fileList = [
@@ -408,7 +408,7 @@ class Picture extends React.Component {
             >
               <Form className="from-view" onSubmit={this.handleSubmit}>
                 <FormItem {...formItemLayout} label="图片标题">
-                  {getFieldDecorator('picture_title', {
+                  {getFieldDecorator('title', {
                     rules: [
                       {
                         required: true,
@@ -432,7 +432,7 @@ class Picture extends React.Component {
                 </FormItem>
 
                 <FormItem {...formItemLayout} label="Upload">
-                  {getFieldDecorator('picture_url', {
+                  {getFieldDecorator('url', {
                     getValueFromEvent: this.normFile
                   })(
                     <Upload

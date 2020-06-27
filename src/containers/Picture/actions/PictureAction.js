@@ -2,7 +2,7 @@ import http from '../../../utils/http'
 
 export const getPictureList = (data, callback) => {
   return (dispatch) => {
-    http.get('/picture/list', data)
+    http.get('/admin/image/pageList', data)
       .then((res) => {
         if (callback) {
           callback(res)

@@ -347,7 +347,7 @@ class ArticleColumn extends React.Component {
     this.props.dispatch(
       getArticleColumnList({ params: { page: current } }, res => {
         let pagination = { ...that.state.pagination }
-        pagination.total = res.count
+        pagination.total = res.total
         pagination.current = current
         that.setState({
           loading: false,
