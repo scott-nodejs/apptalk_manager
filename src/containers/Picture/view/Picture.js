@@ -164,7 +164,7 @@ class Picture extends React.Component {
       {
         uid: -1,
         status: 'done',
-        url: data.picture_url
+        url: data.url
       }
     ]
     this.setState({
@@ -182,7 +182,7 @@ class Picture extends React.Component {
       cancelText: 'No',
       onOk: () => {
         this.fetchDeletePicture({
-          picture_id: this.props.statePicture.current_info.picture_id
+          id: this.props.statePicture.current_info.id
         })
         /*删除标签*/
       },
@@ -294,7 +294,7 @@ class Picture extends React.Component {
     this.props.dispatch(
       updatePicture(
         {
-          picture_id: this.props.statePicture.current_info.picture_id,
+          id: this.props.statePicture.current_info.id,
           ...values
         },
         res => {

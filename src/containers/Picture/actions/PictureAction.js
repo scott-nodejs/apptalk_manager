@@ -17,7 +17,7 @@ export const getPictureList = (data, callback) => {
 
 export const createPicture = (data, callback) => {
   return (dispatch) => {
-    http.post('/picture/create', data)
+    http.post('/admin/image/create', data)
       .then((res) => {
         if (callback) {
           callback(res)
@@ -28,7 +28,7 @@ export const createPicture = (data, callback) => {
 
 export const updatePicture = (data, callback) => {
   return () => {
-    http.post('/picture/update', data)
+    http.post('/admin/image/update/'+data.id, data)
       .then((res) => {
         if (callback) {
           callback(res)
@@ -39,7 +39,7 @@ export const updatePicture = (data, callback) => {
 
 export const deletePicture = (data, callback) => {
   return () => {
-    http.post('/picture/delete', data)
+    http.post('/admin/image/delete/'+data.id, data)
       .then((res) => {
         if (callback) {
           callback(res)
